@@ -1,0 +1,12 @@
+@use '@/styles/color.scss' as c;
+
+.container {
+  width: 450px;
+  background-color: c.$color01;
+  .title {
+    font-family: reboto;
+    font-weight: 100;
+    font-size: 2rem;
+    color: c.$color02;
+  }
+}
