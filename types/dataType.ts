@@ -30,3 +30,13 @@ export interface IPortFolioData {
     contribution: number; // 기여도 퍼센트
   };
 }
+
+export interface ISideData {
+  name: string;
+  enName: Array<String>;
+  infos: Array<{
+    label: string;
+    value: string;
+    href?: string;
+  }>;
+}

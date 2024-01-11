@@ -1,5 +1,5 @@
 import { Client } from '@notionhq/client';
-import { IInfoData, IPortFolioData } from '@/types/dataType';
+import { IInfoData, IPortFolioData, ISideData } from '@/types/dataType';
 
 const notion = new Client({ auth: process.env.API_KEY });
 
@@ -79,14 +79,14 @@ export async function getBlock(
  */
 export async function getInfo(): Promise<{
   resultCode: number;
-  info?: IInfoData;
+  result?: IInfoData;
 }> {
   const blockId = process.env.INFO_BLOCK_ID || '';
   if (!blockId) return { resultCode: 1 }; // env error
   const infos = await getBlock(blockId);
   const info = infos && (infos[0] as IInfoData);
   if (!info) return { resultCode: 2 }; // api error
-  else return { resultCode: 0, info };
+  else return { resultCode: 0, result: info };
 }
 
 /**
@@ -95,11 +95,27 @@ export async function getInfo(): Promise<{
  */
 export async function getPortfolio(): Promise<{
   resultCode: number;
-  portfolio?: Array<IPortFolioData>;
+  result?: Array<IPortFolioData>;
 }> {
   const blockId = process.env.PORTFOLIO_BLOCK_ID || '';
   if (!blockId) return { resultCode: 1 }; // env error
   const portfolio = await getBlock(blockId);
   if (!portfolio) return { resultCode: 2 }; // api error
-  else return { resultCode: 0, portfolio };
+  else return { resultCode: 0, result: portfolio };
+}
+
+/**
+ * 간단한 개인정보 및 메뉴명 등 전역에 쓰일 데이터
+ * @returns @type ISideData
+ */
+export async function getSide(): Promise<{
+  resultCode: number;
+  result?: ISideData;
+}> {
+  const blockId = process.env.SIDE_BLOCK_ID || '';
+  if (!blockId) return { resultCode: 1 }; // env error
+  const results = await getBlock(blockId);
+  const side = results && (results[0] as ISideData);
+  if (!side) return { resultCode: 2 }; // api error
+  else return { resultCode: 0, result: side };
 }
