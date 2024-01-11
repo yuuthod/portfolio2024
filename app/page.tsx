@@ -1,11 +1,15 @@
 import Image from 'next/image';
-import style from './page.module.scss';
+import InfoComponent from '@/components/info';
+import { getInfo } from '@/api';
 
-export default function Home() {
+export default async function Home() {
+  const response = await getInfo();
+  if (response.resultCode > 0) return <div>ERROR {response.resultCode}</div>;
+
   return (
-    <main className={style.container}>
+    <main>
       <Image src='/cat.jpg' alt='우동구리' width={500} height={500} priority />
-      <h1 className={style.title}>이유림입니다.</h1>
+      {response.info && <InfoComponent {...response.info} />}
     </main>
   );
 }
