@@ -1,0 +1,84 @@
+@use '@/styles/color.scss' as c;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 225px;
+  min-height: 100%;
+  padding: 20px 30px 20px;
+  color: c.$color02;
+  background-color: c.$color01;
+  .title {
+    margin: 0;
+    font-weight: 900;
+    font-size: 4.5rem;
+    cursor: pointer;
+    span {
+      display: block;
+      &:last-child {
+        margin-top: -15px;
+      }
+    }
+  }
+  .titleContainer {
+    cursor: pointer;
+    .title {
+      margin: 0;
+      font-weight: 900;
+      font-size: 3rem;
+      span {
+        display: block;
+        margin-bottom: 10px;
+      }
+    }
+    .imgBox {
+      position: relative;
+      overflow: hidden;
+      width: 120px;
+      height: 150px;
+    }
+  }
+  .infoBlock {
+    .name {
+      display: inline-block;
+      font-size: 1.5rem;
+      &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 4px;
+        margin-bottom: 5px;
+        background-color: c.$color02;
+      }
+    }
+    .infos {
+      list-style: none;
+      padding: 0;
+      li {
+        margin-bottom: 20px;
+        p {
+          margin: 8px 0;
+        }
+        .label-title {
+          font-size: 0.8rem;
+        }
+        .label {
+          font-size: 1.2rem;
+          font-weight: 300;
+          &:hover {
+            cursor: pointer;
+          }
+          &:active {
+            font-weight: 400;
+          }
+        }
+      }
+      a {
+        color: c.$color02;
+        font-weight: 300;
+        text-decoration: none;
+      }
+    }
+  }
+}

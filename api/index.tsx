@@ -1,5 +1,6 @@
 import { Client } from '@notionhq/client';
 import { IInfoData, IPortFolioData, ISideData } from '@/types/dataType';
+import getBase64 from '@/util/getBase64';
 
 const notion = new Client({ auth: process.env.API_KEY });
 
@@ -22,12 +23,12 @@ export async function getDatabase(databaseId: string) {
     });
     return (response.results as Array<IDatabase>).map((page) => ({
       id: page.id,
-      dataName: page.properties['dataName'].title[0].text.content || '',
-      discription:
-        page.properties['discription'].rich_text[0].text.content || ''
+      dataName: page.properties.dataName.title[0].text.content || '',
+      discription: page.properties.discription.rich_text[0].text.content || ''
     }));
   } catch (error) {
     console.error('getDatabase error', error);
+    return undefined;
   }
 }
 
@@ -44,6 +45,7 @@ export async function getPage(pageId: string) {
     return response;
   } catch (error) {
     console.error('getPage error', error);
+    return undefined;
   }
 }
 
@@ -64,12 +66,14 @@ export async function getBlock(
       .filter((block) => (block as { type: string }).type === 'code')
       .map((block) => {
         const blocks = block as { [key: string]: any };
-        const strData = blocks.code['rich_text'][0].text.content;
-        if (strData[0] !== '{' && strData[strData.length - 1] !== '}') return;
+        const strData = blocks.code.rich_text[0].text.content;
+        if (strData[0] !== '{' && strData[strData.length - 1] !== '}')
+          return undefined;
         return JSON.parse(strData);
       });
   } catch (error) {
     console.error('getPage error', error);
+    return undefined;
   }
 }
 
@@ -86,7 +90,7 @@ export async function getInfo(): Promise<{
   const infos = await getBlock(blockId);
   const info = infos && (infos[0] as IInfoData);
   if (!info) return { resultCode: 2 }; // api error
-  else return { resultCode: 0, result: info };
+  return { resultCode: 0, result: info };
 }
 
 /**
@@ -101,7 +105,7 @@ export async function getPortfolio(): Promise<{
   if (!blockId) return { resultCode: 1 }; // env error
   const portfolio = await getBlock(blockId);
   if (!portfolio) return { resultCode: 2 }; // api error
-  else return { resultCode: 0, result: portfolio };
+  return { resultCode: 0, result: portfolio };
 }
 
 /**
@@ -117,5 +121,7 @@ export async function getSide(): Promise<{
   const results = await getBlock(blockId);
   const side = results && (results[0] as ISideData);
   if (!side) return { resultCode: 2 }; // api error
-  else return { resultCode: 0, result: side };
+  // 이미지 로딩용 블러처리
+  const { base64 } = await getBase64(side.photo);
+  return { resultCode: 0, result: { ...side, photoBlur: base64 } };
 }

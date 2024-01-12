@@ -1,15 +1,20 @@
-import Image from 'next/image';
 import InfoComponent from '@/components/info';
-import { getInfo } from '@/api';
+import SideBarComponent from '@/components/sideBar';
+import { getInfo, getSide } from '@/api';
+import style from './page.module.scss';
 
-export default async function Home() {
-  const response = await getInfo();
-  if (response.resultCode > 0) return <div>ERROR {response.resultCode}</div>;
+export default async function Info() {
+  const sideResponse = await getSide();
+  if (sideResponse.resultCode > 0)
+    return <div>ERROR SIDE : {sideResponse.resultCode}</div>;
+  const infoResponse = await getInfo();
+  if (infoResponse.resultCode > 0)
+    return <div>ERROR INFO : {infoResponse.resultCode}</div>;
 
   return (
-    <main>
-      <Image src='/cat.jpg' alt='우동구리' width={500} height={500} priority />
-      {response.info && <InfoComponent {...response.info} />}
+    <main className={style.container}>
+      {sideResponse.result && <SideBarComponent {...sideResponse.result} />}
+      {infoResponse.result && <InfoComponent {...infoResponse.result} />}
     </main>
   );
 }

@@ -34,6 +34,8 @@ export interface IPortFolioData {
 export interface ISideData {
   name: string;
   enName: Array<String>;
+  photo: string;
+  photoBlur: string;
   infos: Array<{
     label: string;
     value: string;
