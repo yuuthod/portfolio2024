@@ -29,11 +29,21 @@
     "sourceType": "module",
     "project": ["tsconfig.json"]
   },
+  "ignorePatterns": ["next.config.mjs"],
   "rules": {
     "spaced-comment": "error",
-    "quotes": ["error", "single"],
+    "quotes": [
+      "error",
+      "single",
+      { "avoidEscape": true, "allowTemplateLiterals": true }
+    ],
     "no-duplicate-imports": "error",
-    "no-unused-vars": "off", // 사용되지 않는 변수에 대한 경고
+    "no-unused-vars": "off", // 사용
+    "import/prefer-default-export": "off",
+    "react/function-component-definition": [
+      2,
+      { "namedcomponents": ["arrow-function", "function-declaration"] }
+    ],
     // next와 출동하는 rule
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off"
