@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ISideData } from '@/types/dataType';
 import cn from 'classnames';
@@ -20,6 +20,34 @@ function SideBarComponent({ enName, infos, nav }: ISideData): ReactElement {
   const handleClickMobileHamburger = (show: boolean) => {
     setIsMobileMenu(show);
   };
+
+  // Mobile Menu Open시 스크롤 방지
+  useEffect(() => {
+    const html = document.querySelector('html');
+    if (html === null) return;
+    if (isMobileMenu) {
+      html.style.overflow = 'hidden';
+      return;
+    }
+    html.style.overflow = 'auto';
+  }, [isMobileMenu]);
+
+  // Mobile Menu event가 desktop size에서 동작하는 것을 방지
+  useEffect(() => {
+    const handleWindowResize = () => {
+      const html = document.querySelector('html');
+      if (html === null) return;
+      const windowWidth = window.innerWidth;
+      if (windowWidth > 770) {
+        html.style.overflow = 'auto';
+        setIsMobileMenu(false);
+      }
+    };
+    window.addEventListener('resize', handleWindowResize);
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
 
   return (
     <div className={style['side-bar']}>
