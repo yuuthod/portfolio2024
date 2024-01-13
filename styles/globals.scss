@@ -1,8 +1,12 @@
+@use '@/styles/color.scss' as c;
+
 html {
   font-size: 15px;
 }
 body {
-  background-color: #173261;
+  background-color: c.$color01;
+  color: c.$color05;
+  font-weight: 300;
 }
 p {
   margin: 0;

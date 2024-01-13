@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import '@/styles/globals.css';
+import '@/styles/globals.scss';
 import '@/styles/reset.css';
 import { getSide } from '@/api';
 import { use } from 'react';
