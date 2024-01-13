@@ -8,10 +8,16 @@ export interface IInfoData {
   name: string;
   year: number;
   photo: string;
-  introduce: string;
-  education: Array<IDateData>; // 학력
-  career: Array<IDateData>; // 경력
-  certificate: Array<IDateData>; // 자격증
+  introduce: {
+    label: string;
+    discription: string;
+  };
+  // 이력서 항목 (학력/경력/자격증)
+  resumeItems: Array<{
+    key: string;
+    label: string;
+    items: Array<IDateData>;
+  }>;
 }
 
 export interface IPortFolioData {
@@ -33,9 +39,14 @@ export interface IPortFolioData {
 
 export interface ISideData {
   name: string;
-  enName: Array<String>;
+  enName: string;
   photo: string;
   photoBlur: string;
+  nav: Array<{
+    key: string;
+    label: string;
+    href: string;
+  }>;
   infos: Array<{
     label: string;
     value: string;

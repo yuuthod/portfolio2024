@@ -1,84 +1,136 @@
 @use '@/styles/color.scss' as c;
+@import '@/styles/mixin.scss';
+
+.side-bar {
+  min-width: 250px;
+}
+
+.mobileOpenBtn {
+  display: none;
+}
+.mobileCloseBtn {
+  display: none;
+}
 
 .container {
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 225px;
   min-height: 100%;
-  padding: 20px 30px 20px;
   color: c.$color02;
   background-color: c.$color01;
-  .title {
-    margin: 0;
-    font-weight: 900;
-    font-size: 4.5rem;
+}
+
+.nav {
+  padding: 30px 30px 0;
+  font-weight: 300;
+  font-size: 1.5rem;
+  li {
+    margin-bottom: 20px;
     cursor: pointer;
-    span {
-      display: block;
-      &:last-child {
-        margin-top: -15px;
-      }
+    &.active {
+      text-decoration: underline;
+      color: c.$color06;
+    }
+    &:hover {
+      text-decoration: underline;
+      color: c.$color06;
     }
   }
-  .titleContainer {
-    cursor: pointer;
-    .title {
-      margin: 0;
-      font-weight: 900;
-      font-size: 3rem;
-      span {
-        display: block;
-        margin-bottom: 10px;
+}
+.infoBlock {
+  padding: 0 30px 20px;
+  .name {
+    display: inline-block;
+    margin-bottom: 50px;
+    font-size: 1.3rem;
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 4px;
+      margin-bottom: 10px;
+      background-color: c.$color02;
+    }
+  }
+  .infos {
+    list-style: none;
+    padding: 0;
+    li {
+      margin-bottom: 20px;
+      p {
+        margin: 8px 0;
       }
     }
-    .imgBox {
-      position: relative;
-      overflow: hidden;
-      width: 120px;
-      height: 150px;
+    a {
+      color: c.$color02;
+      font-weight: 300;
+      text-decoration: none;
+    }
+  }
+  .label-title {
+    font-size: 0.8rem;
+  }
+  .label {
+    font-size: 1.2rem;
+    font-weight: 300;
+    &:hover {
+      cursor: pointer;
+    }
+    &:active {
+      font-weight: 400;
+    }
+  }
+}
+
+@include mobile {
+  .mobileCloseBtn,
+  .mobileOpenBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: block;
+  }
+  .container {
+    width: 100%;
+    height: 100vh;
+    &.close {
+      animation: mobileMenuClose 0.5s;
+      transform: translate(-100%);
+    }
+    &.show {
+      animation: mobileMenuOpen 0.5s;
+      transform: translate(0);
     }
   }
   .infoBlock {
-    .name {
-      display: inline-block;
-      font-size: 1.5rem;
-      &::before {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 4px;
-        margin-bottom: 5px;
-        background-color: c.$color02;
-      }
-    }
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
     .infos {
-      list-style: none;
-      padding: 0;
-      li {
-        margin-bottom: 20px;
-        p {
-          margin: 8px 0;
-        }
-        .label-title {
-          font-size: 0.8rem;
-        }
-        .label {
-          font-size: 1.2rem;
-          font-weight: 300;
-          &:hover {
-            cursor: pointer;
-          }
-          &:active {
-            font-weight: 400;
-          }
-        }
+      .label {
+        font-size: 1rem;
       }
-      a {
-        color: c.$color02;
-        font-weight: 300;
-        text-decoration: none;
+      .label-title {
       }
     }
+  }
+}
+
+@keyframes mobileMenuClose {
+  0% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(-100%);
+  }
+}
+@keyframes mobileMenuOpen {
+  0% {
+    transform: translate(-100%);
+  }
+  100% {
+    transform: translate(0);
   }
 }

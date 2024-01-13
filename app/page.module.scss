@@ -1,7 +1,17 @@
 @use '@/styles/color.scss' as c;
+@import '@/styles/mixin.scss';
 
 .container {
   width: 100%;
-  min-height: 100vh;
   display: flex;
+}
+.content {
+  padding: 40px 30px;
+  background-color: #fff;
+}
+
+@include mobile {
+  .container {
+    display: block;
+  }
 }
