@@ -90,7 +90,16 @@ export async function getInfo(): Promise<{
   const infos = await getBlock(blockId);
   const info = infos && (infos[0] as IInfoData);
   if (!info) return { resultCode: 2 }; // api error
-  return { resultCode: 0, result: info };
+
+  // 이미지 로딩용 블러처리
+  const photos = await Promise.all(
+    info.photos.map(async (photo) => {
+      const { base64 } = await getBase64(photo.src);
+      return { ...photo, blur: base64 };
+    })
+  );
+
+  return { resultCode: 0, result: { ...info, photos } };
 }
 
 /**

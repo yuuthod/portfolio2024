@@ -1,20 +1,43 @@
 export interface IDateData {
+  id: string;
   start: string;
   end?: string;
   discription: string;
 }
 
+export interface IPhoto {
+  id: string;
+  src: string;
+  blur: string;
+}
+export interface ICompanies {
+  id: string;
+  date: Array<string>;
+  name: string;
+  nameEn: string;
+  position: string;
+  projects?: Array<{
+    id: string;
+    name: string;
+    date: Array<string>;
+  }>;
+}
 export interface IInfoData {
   name: string;
   year: number;
-  photo: string;
+  photos: Array<IPhoto>;
   introduce: {
     label: string;
     discription: string;
   };
-  // 이력서 항목 (학력/경력/자격증)
+  // 경력
+  workExperience: {
+    label: string;
+    companies: Array<ICompanies>;
+  };
+  // 이력서 항목 (학력/자격증)
   resumeItems: Array<{
-    key: string;
+    id: string;
     label: string;
     items: Array<IDateData>;
   }>;
