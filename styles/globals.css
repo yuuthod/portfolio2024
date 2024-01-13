@@ -1,3 +1,31 @@
 html {
   font-size: 15px;
 }
+body {
+  background-color: #173261;
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+button {
+  appearance: none;
+  border-radius: 0;
+  text-align: inherit;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  color: inherit;
+  font: inherit;
+}
+a {
+  color: inherit;
+  text-decoration: inherit; /* no underline */
+}
