@@ -9,7 +9,10 @@ import ProfilePhoto from '../ProfilePhoto';
 function infoComponent({
   name,
   year,
+  jop,
   photos,
+  introduce,
+  skills,
   workExperience,
   resumeItems
 }: IInfoData): ReactElement {
@@ -22,19 +25,15 @@ function infoComponent({
             <span className={style.name}>{name}</span>
             <span className={style.year}>{year}</span>
           </p>
-          <p className={style.jop}>FrontEnd Developer</p>
-          <p className={style.discription}>
-            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-            fugit, sed quia consequuntur magni dolores eos qui ratione
-            voluptatem sequi nesciunt. Neque porro quisquam est.
-          </p>
+          <p className={style.jop}>{jop}</p>
+          <p className={style.discription}>{introduce.discription}</p>
         </div>
         <div className={style.skills}>
-          <p className={style.title}>Skills</p>
+          <p className={style.title}>{skills.label}</p>
           <ul className={style.list}>
-            <li>React.js</li>
-            <li>Next.js</li>
-            <li>Typescript</li>
+            {skills.list.map((item) => (
+              <li key={item.id}>{item.label}</li>
+            ))}
           </ul>
         </div>
       </div>
@@ -60,7 +59,7 @@ function infoComponent({
                       {item.start}
                       {item.end && ` ~ ${item.end}`}
                     </span>
-                    <span>|</span>
+                    <span className={style['vertical-bar']}>|</span>
                     <span className={style['resume-disc']}>
                       {item.discription}
                     </span>

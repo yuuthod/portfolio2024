@@ -25,10 +25,19 @@ export interface ICompanies {
 export interface IInfoData {
   name: string;
   year: number;
+  jop: string;
   photos: Array<IPhoto>;
   introduce: {
     label: string;
     discription: string;
+  };
+  skills: {
+    id: string;
+    label: string;
+    list: Array<{
+      id: string;
+      label: string;
+    }>;
   };
   // 경력
   workExperience: {

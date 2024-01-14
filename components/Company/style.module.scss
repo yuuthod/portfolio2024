@@ -1,41 +1,70 @@
 @use '@/styles/color.scss' as c;
+@import '@/styles/mixin.scss';
 
 .container {
   display: flex;
   margin: 50px 0 0;
+}
+.date {
+  width: 20%;
+  padding-right: 20px;
+  span {
+    display: block;
+  }
+}
+.company {
+  width: 40%;
+  padding-right: 20px;
+  .companyName {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: c.$color01;
+  }
+  .compatyNameEn {
+    margin-top: 5px;
+    color: c.$color01;
+  }
+  .position {
+    margin-top: 15px;
+    font-size: 0.9rem;
+  }
+}
+.projectList {
+  width: 40%;
+  .projectName {
+    line-height: 1.5;
+    font-weight: 500;
+  }
+  .projectDate {
+    margin: 5px 0 20px;
+    font-size: 0.8rem;
+  }
+}
+
+@include mobile {
+  .container {
+    display: block;
+  }
   .date {
-    width: 20%;
-    padding-right: 20px;
+    width: 100%;
+    padding-bottom: 10px;
     span {
-      display: block;
+      display: inline;
+      padding-bottom: 2px;
+      background-color: c.$color03;
+      &:nth-child(1) {
+        padding-left: 5px;
+      }
+      &:nth-child(2) {
+        padding-right: 5px;
+      }
     }
   }
   .company {
-    width: 40%;
-    padding-right: 20px;
-    .companyName {
-      font-size: 1.35rem;
-      font-weight: 600;
-      color: c.$color01;
-    }
-    .compatyNameEn {
-      margin-top: 5px;
-      color: c.$color01;
-    }
-    .position {
-      margin-top: 15px;
-      font-size: 0.9rem;
-    }
+    width: 100%;
   }
   .projectList {
-    width: 40%;
-    .projectName {
-      line-height: 1.5;
-      font-weight: 500;
-    }
-    .projectDate {
-      margin: 5px 0 20px;
-      font-size: 0.8rem;
-    }
+    width: 100%;
+    margin-top: 30px;
   }
 }
