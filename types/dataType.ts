@@ -2,7 +2,7 @@ export interface IDateData {
   id: string;
   start: string;
   end?: string;
-  discription: string;
+  description: string;
 }
 
 export interface IPhoto {
@@ -29,7 +29,7 @@ export interface IInfoData {
   photos: Array<IPhoto>;
   introduce: {
     label: string;
-    discription: string;
+    description: string;
   };
   skills: {
     id: string;
@@ -52,20 +52,7 @@ export interface IInfoData {
   }>;
 }
 
-export interface IPortFolioData {
-  officeName: string;
-  projectName: string;
-  discription: string;
   imageCount: number;
-  projectInfo: {
-    team: {
-      // 팀원
-      total: number;
-      discription: string;
-    };
-    skill: Array<string>; // 기술스택
-    worked: []; // 참여부분
-    contribution: number; // 기여도 퍼센트
   };
 }
 

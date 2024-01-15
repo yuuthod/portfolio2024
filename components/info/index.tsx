@@ -26,7 +26,7 @@ function infoComponent({
             <span className={style.year}>{year}</span>
           </p>
           <p className={style.jop}>{jop}</p>
-          <p className={style.discription}>{introduce.discription}</p>
+          <p className={style.description}>{introduce.description}</p>
         </div>
         <div className={style.skills}>
           <p className={style.title}>{skills.label}</p>
@@ -60,8 +60,8 @@ function infoComponent({
                       {item.end && ` ~ ${item.end}`}
                     </span>
                     <span className={style['vertical-bar']}>|</span>
-                    <span className={style['resume-disc']}>
-                      {item.discription}
+                    <span className={style['resume-desc']}>
+                      {item.description}
                     </span>
                   </p>
                 </li>
