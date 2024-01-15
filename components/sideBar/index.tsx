@@ -73,7 +73,10 @@ function SideBarComponent({ enName, infos, nav }: ISideData): ReactElement {
             {nav.map((menu) => (
               <li
                 key={`menu_${menu.key}`}
-                className={cn(pathname === menu.href && style.active)}
+                className={cn(
+                  pathname.split('/')[1] === menu.href.split('/')[1] &&
+                    style.active
+                )}
               >
                 <Link href={menu.href}>{menu.label}</Link>
               </li>

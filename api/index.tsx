@@ -1,5 +1,5 @@
 import { Client } from '@notionhq/client';
-import { IInfoData, IPortFolioData, ISideData } from '@/types/dataType';
+import { IInfoData, IPortfolioData, ISideData } from '@/types/dataType';
 import getBase64 from '@/util/getBase64';
 
 const notion = new Client({ auth: process.env.API_KEY });
@@ -24,7 +24,7 @@ export async function getDatabase(databaseId: string) {
     return (response.results as Array<IDatabase>).map((page) => ({
       id: page.id,
       dataName: page.properties.dataName.title[0].text.content || '',
-      discription: page.properties.discription.rich_text[0].text.content || ''
+      description: page.properties.description.rich_text[0].text.content || ''
     }));
   } catch (error) {
     console.error('getDatabase error', error);
@@ -104,15 +104,14 @@ export async function getInfo(): Promise<{
 
 /**
  * 포트폴리오
- * @returns @type Array<IPortFolioData>
+ * @returns @type Array<IPortfolioData>
  */
-export async function getPortfolio(): Promise<{
+export async function getPortfolio(blockId: string): Promise<{
   resultCode: number;
-  result?: Array<IPortFolioData>;
+  result?: IPortfolioData;
 }> {
-  const blockId = process.env.PORTFOLIO_BLOCK_ID || '';
-  if (!blockId) return { resultCode: 1 }; // env error
-  const portfolio = await getBlock(blockId);
+  const results = await getBlock(blockId);
+  const portfolio = results && (results[0] as IPortfolioData);
   if (!portfolio) return { resultCode: 2 }; // api error
   return { resultCode: 0, result: portfolio };
 }

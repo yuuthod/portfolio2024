@@ -52,8 +52,32 @@ export interface IInfoData {
   }>;
 }
 
+export interface IPortfolioData {
+  subTitle: string;
+  title: string;
+  description: string;
   imageCount: number;
+  team: {
+    label: string;
+    total: number;
+    description: string;
   };
+  skill: {
+    label: string;
+    list: Array<{
+      id: string;
+      label: string;
+    }>;
+  };
+  taskList: {
+    label: string;
+    list: Array<{
+      id: string;
+      description: string;
+    }>;
+  };
+  nextBlockId?: string;
+  prevBlockId?: string;
 }
 
 export interface ISideData {

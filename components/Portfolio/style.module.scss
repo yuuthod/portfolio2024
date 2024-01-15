@@ -1,0 +1,106 @@
+@use '@/styles/color.scss' as c;
+@import '@/styles/mixin.scss';
+
+.container {
+  width: calc(100% - 40px);
+  padding: 40px 0 40px 40px;
+}
+.next-btn {
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: c.$color07;
+  a {
+    margin-right: 20px;
+  }
+  svg {
+    vertical-align: text-bottom;
+  }
+  .perv-btn {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+.subTitle {
+  margin-bottom: 5px;
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: c.$color01;
+}
+.title {
+  max-width: 500px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  font-size: 1.8rem;
+  color: c.$color01;
+}
+.project-desc {
+  max-width: 500px;
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+.img-container {
+  overflow-x: scroll;
+  .img-list {
+    display: flex;
+    li {
+      min-width: 357px;
+      min-height: 211px;
+      margin-right: 20px;
+      background-color: #ddd;
+    }
+  }
+}
+.infos {
+  display: flex;
+  margin-top: 60px;
+  .label {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: c.$color01;
+  }
+  .left {
+    .team {
+      .total {
+        margin-bottom: 10px;
+      }
+    }
+    .skill {
+      max-width: 500px;
+      margin-top: 40px;
+      .list span {
+        display: inline-block;
+        margin: 0 10px 5px 0;
+        &::after {
+          content: ',';
+        }
+      }
+    }
+  }
+  .right {
+    margin-left: 40px;
+    .task-list {
+      padding-right: 20px;
+      li {
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    // width: 100%;
+  }
+  .infos {
+    display: block;
+    .right {
+      margin: 40px 0 0 0;
+    }
+  }
+}
