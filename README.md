@@ -1,6 +1,3 @@
-2024 portfolio
-
-- [x] Notion DB 연결
-- [x] Info
-- [ ] Portfolio
-  - [ ] image slider
+- vercel 배포 후 dynamic page에서 500 server error가 발생
+- sharp 문제로 판단
+- 추후 다른 배포 환경에서 테스트 하기 위해 sharp을 삭제하기 전 브랜치 분리
