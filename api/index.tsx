@@ -1,6 +1,5 @@
 import { Client } from '@notionhq/client';
 import { IInfoData, IPortfolioData, ISideData } from '@/types/dataType';
-import getBase64 from '@/util/getBase64';
 
 const notion = new Client({ auth: process.env.API_KEY });
 
@@ -91,15 +90,7 @@ export async function getInfo(): Promise<{
   const info = infos && (infos[0] as IInfoData);
   if (!info) return { resultCode: 2 }; // api error
 
-  // 이미지 로딩용 블러처리
-  const photos = await Promise.all(
-    info.photos.map(async (photo) => {
-      const { base64 } = await getBase64(photo.src);
-      return { ...photo, blur: base64 };
-    })
-  );
-
-  return { resultCode: 0, result: { ...info, photos } };
+  return { resultCode: 0, result: info };
 }
 
 /**
@@ -129,7 +120,5 @@ export async function getSide(): Promise<{
   const results = await getBlock(blockId);
   const side = results && (results[0] as ISideData);
   if (!side) return { resultCode: 2 }; // api error
-  // 이미지 로딩용 블러처리
-  const { base64 } = await getBase64(side.photo);
-  return { resultCode: 0, result: { ...side, photoBlur: base64 } };
+  return { resultCode: 0, result: side };
 }

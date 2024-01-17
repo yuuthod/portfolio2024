@@ -10,14 +10,11 @@
   },
   "dependencies": {
     "@notionhq/client": "^2.2.14",
-    "@plaiceholder/next": "^3.0.0",
     "classnames": "^2.5.1",
     "next": "14.0.4",
-    "plaiceholder": "^3.0.0",
     "react": "^18",
     "react-dom": "^18",
-    "sass": "^1.69.7",
-    "sharp": "^0.33.2"
+    "sass": "^1.69.7"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
