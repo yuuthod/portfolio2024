@@ -2,6 +2,9 @@ import { ReactElement } from 'react';
 import { IPortfolioData } from '@/types/dataType';
 import Link from 'next/link';
 import ArrowForwardSVG from '@/public/icons/arrow_forward.svg';
+import CircleRightSVG from '@/public/icons/expand_circle_right.svg';
+import CheckBoxSVG from '@/public/icons/check_box.svg';
+import CheckBoxBlankSVG from '@/public/icons/check_box_outline_blank.svg';
 import cn from 'classnames';
 import style from './style.module.scss';
 
@@ -12,7 +15,9 @@ function PortfolioComponent({
   imageCount,
   team,
   skill,
+  connectLinks,
   taskList,
+  todoList,
   nextBlockId,
   prevBlockId
 }: IPortfolioData): ReactElement {
@@ -63,14 +68,46 @@ function PortfolioComponent({
               ))}
             </p>
           </div>
+          {connectLinks && (
+            <div className={style.links}>
+              <p className={style.label}>{connectLinks.label}</p>
+              <ul>
+                {connectLinks.list.map((link) => (
+                  <li key={link.id}>
+                    <Link href={link.href}>{link.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
         <div className={style.right}>
           <p className={style.label}>{taskList.label}</p>
-          <ul className={style['task-list']}>
+          <ul className={style.list}>
             {taskList.list.map((task) => (
-              <li key={task.id}>{task.description}</li>
+              <li key={task.id}>
+                <CircleRightSVG alt='참여범위 글머리 기호' />
+                {task.description}
+              </li>
             ))}
           </ul>
+          {todoList && (
+            <>
+              <p className={style.label}>{todoList.label}</p>
+              <ul className={style.list}>
+                {todoList.list.map((todo) => (
+                  <li key={todo.id}>
+                    {todo.isCheck ? (
+                      <CheckBoxSVG alt='TODO ITEM 완료' />
+                    ) : (
+                      <CheckBoxBlankSVG alt='TODO ITEM 작업 예정' />
+                    )}
+                    {todo.description}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
         </div>
       </div>
     </div>

@@ -69,10 +69,26 @@ export interface IPortfolioData {
       label: string;
     }>;
   };
+  connectLinks?: {
+    label: string;
+    list: Array<{
+      id: string;
+      label: string;
+      href: string;
+    }>;
+  };
   taskList: {
     label: string;
     list: Array<{
       id: string;
+      description: string;
+    }>;
+  };
+  todoList?: {
+    label: string;
+    list: Array<{
+      id: string;
+      isCheck: boolean;
       description: string;
     }>;
   };

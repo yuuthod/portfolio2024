@@ -4,6 +4,9 @@
 .container {
   width: calc(100% - 40px);
   padding: 40px 0 40px 40px;
+
+  max-width: 1500px;
+  margin: 0 auto;
 }
 .next-btn {
   margin-bottom: 30px;
@@ -64,30 +67,48 @@
     color: c.$color01;
   }
   .left {
+    width: 500px;
     .team {
       .total {
         margin-bottom: 10px;
       }
     }
     .skill {
-      max-width: 500px;
       margin-top: 40px;
       .list span {
         display: inline-block;
         margin: 0 10px 5px 0;
-        &::after {
+        &:not(:last-child)::after {
           content: ',';
         }
+      }
+    }
+    .links {
+      margin-top: 40px;
+      ul li a {
+        display: inline-flex;
+        padding: 8px 16px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        border: 2px solid c.$color01;
+        color: c.$color02;
+        background: c.$color01;
       }
     }
   }
   .right {
     margin-left: 40px;
-    .task-list {
+    .list {
+      margin-bottom: 40px;
       padding-right: 20px;
       li {
         margin-bottom: 15px;
         line-height: 1.5;
+      }
+      svg {
+        margin-right: 5px;
+        vertical-align: text-top;
       }
     }
   }
@@ -96,6 +117,9 @@
 @include tablet {
   .infos {
     display: block;
+    .left {
+      width: 100%;
+    }
     .right {
       margin: 40px 0 0 0;
     }
