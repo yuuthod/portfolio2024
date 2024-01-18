@@ -20,6 +20,9 @@ function SideBarComponent({ enName, infos, nav }: ISideData): ReactElement {
   const handleClickMobileHamburger = (show: boolean) => {
     setIsMobileMenu(show);
   };
+  const handleClickCloseMenuOnMobile = () => {
+    setIsMobileMenu(false);
+  };
 
   // Mobile Menu Open시 스크롤 방지
   useEffect(() => {
@@ -78,7 +81,9 @@ function SideBarComponent({ enName, infos, nav }: ISideData): ReactElement {
                     style.active
                 )}
               >
-                <Link href={menu.href}>{menu.label}</Link>
+                <Link href={menu.href} onClick={handleClickCloseMenuOnMobile}>
+                  {menu.label}
+                </Link>
               </li>
             ))}
           </ul>
