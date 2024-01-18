@@ -94,13 +94,24 @@
 }
 
 @include tablet {
-  .container {
-    // width: 100%;
-  }
   .infos {
     display: block;
     .right {
       margin: 40px 0 0 0;
     }
+  }
+}
+
+@include mobile {
+  .container {
+    width: calc(100% - 80px);
+    padding: 80px 40px 120px;
+
+    position: relative;
+  }
+  .next-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
   }
 }
