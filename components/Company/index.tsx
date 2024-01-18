@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+import Link from 'next/link';
 import { ICompanies } from '@/types/dataType';
 import style from './style.module.scss';
 
@@ -24,9 +25,11 @@ function Company({
         <ul className={style.projectList}>
           {projects.map((project) => (
             <li key={project.id}>
-              <p className={style.projectName}>{project.name}</p>
               <p className={style.projectDate}>
                 <span>{project.date[0]} </span>-<span> {project.date[1]}</span>
+              </p>
+              <p className={style.projectName}>
+                <Link href={`/portfolio/${project.id}`}>{project.name}</Link>
               </p>
             </li>
           ))}
