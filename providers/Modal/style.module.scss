@@ -1,0 +1,41 @@
+@use '@/styles/color.scss' as c;
+@import '@/styles/mixin.scss';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    max-width: calc(100% - 200px);
+    max-height: calc(100vh - 100px);
+    margin-right: -50%;
+    padding: 10px;
+    transform: translate(-50%, -50%);
+    background-color: c.$color02;
+    border-radius: 5px;
+    .closeButton {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+  }
+}
+
+@include tablet {
+  .overlay {
+    .modal {
+      max-width: calc(100% - 40px);
+      max-height: calc(100vh - 100px);
+    }
+  }
+}

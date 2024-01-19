@@ -6,6 +6,7 @@ import { use } from 'react';
 import SideBarComponent from '@/components/sideBar';
 import { roboto } from './fonts';
 import style from './page.module.scss';
+import Providers from './providers';
 
 export const metadata: Metadata = {
   title: "Yurim's Portfolio",
@@ -23,10 +24,14 @@ export default function RootLayout({
   return (
     <html lang='ko' data-theme='light'>
       <body className={roboto.className}>
-        <main className={style.container}>
-          {sideResponse.result && <SideBarComponent {...sideResponse.result} />}
-          <div className={style.content}>{children}</div>
-        </main>
+        <Providers>
+          <main className={style.container}>
+            {sideResponse.result && (
+              <SideBarComponent {...sideResponse.result} />
+            )}
+            <div className={style.content}>{children}</div>
+          </main>
+        </Providers>
       </body>
     </html>
   );
