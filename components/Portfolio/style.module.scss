@@ -45,15 +45,26 @@
   line-height: 1.5;
   word-break: keep-all;
 }
+
 .img-container {
   overflow-x: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
   .img-list {
     display: flex;
+    min-height: 211px;
     li {
+      overflow: hidden;
       min-width: 357px;
-      min-height: 211px;
+      max-height: 211px;
       margin-right: 20px;
-      background-color: #ddd;
+      cursor: pointer;
+      img {
+        height: auto;
+      }
     }
   }
 }
@@ -103,12 +114,17 @@
       margin-bottom: 40px;
       padding-right: 20px;
       li {
+        display: flex;
+        flex-wrap: nowrap;
         margin-bottom: 15px;
         line-height: 1.5;
       }
       svg {
-        margin-right: 5px;
+        min-width: 25px;
         vertical-align: text-top;
+      }
+      span {
+        padding-left: 5px;
       }
     }
   }

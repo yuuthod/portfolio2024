@@ -1,4 +1,7 @@
-import { ReactElement } from 'react';
+'use client';
+
+import { ReactElement, useCallback } from 'react';
+import Image from 'next/image';
 import { IPortfolioData } from '@/types/dataType';
 import Link from 'next/link';
 import ArrowForwardSVG from '@/public/icons/arrow_forward.svg';
@@ -6,13 +9,15 @@ import CircleRightSVG from '@/public/icons/expand_circle_right.svg';
 import CheckBoxSVG from '@/public/icons/check_box.svg';
 import CheckBoxBlankSVG from '@/public/icons/check_box_outline_blank.svg';
 import cn from 'classnames';
+import { useModal } from '@/providers/Modal';
+import ImageViewerModal from '@/components/commons/ImageViewerModal';
 import style from './style.module.scss';
 
 function PortfolioComponent({
   subTitle,
   title,
   description,
-  imageCount,
+  images,
   team,
   skill,
   connectLinks,
@@ -21,6 +26,19 @@ function PortfolioComponent({
   nextBlockId,
   prevBlockId
 }: IPortfolioData): ReactElement {
+  const { openModal, closeModal } = useModal();
+  const handleClickImage = useCallback(
+    (idx: number) => {
+      if (!images) return;
+      openModal(
+        <ImageViewerModal images={images} idx={idx} closeModal={closeModal} />,
+        {
+          isNoCloseBtn: true
+        }
+      );
+    },
+    [openModal, closeModal, images]
+  );
   return (
     <div className={style.container}>
       <div className={cn(style['next-btn'])}>
@@ -43,13 +61,21 @@ function PortfolioComponent({
       <p className={style.subTitle}>{subTitle}</p>
       <p className={style.title}>{title}</p>
       <p className={style['project-desc']}>{description}</p>
-      {imageCount !== 0 && (
+      {images && (
         <div className={style['img-container']}>
           <ul className={style['img-list']}>
-            <li>이미지1</li>
-            <li>이미지2</li>
-            <li>이미지3</li>
-            <li>이미지4</li>
+            {images.map((img, idx) => (
+              <li key={img.id}>
+                <Image
+                  alt={img.alt}
+                  src={img.src}
+                  width={357}
+                  height={0}
+                  sizes='357px'
+                  onClick={() => handleClickImage(idx)}
+                />
+              </li>
+            ))}
           </ul>
         </div>
       )}
@@ -87,7 +113,7 @@ function PortfolioComponent({
             {taskList.list.map((task) => (
               <li key={task.id}>
                 <CircleRightSVG alt='참여범위 글머리 기호' />
-                {task.description}
+                <span>{task.description}</span>
               </li>
             ))}
           </ul>
@@ -102,7 +128,7 @@ function PortfolioComponent({
                     ) : (
                       <CheckBoxBlankSVG alt='TODO ITEM 작업 예정' />
                     )}
-                    {todo.description}
+                    <span>{todo.description}</span>
                   </li>
                 ))}
               </ul>

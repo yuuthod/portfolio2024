@@ -52,11 +52,16 @@ export interface IInfoData {
   }>;
 }
 
+export interface IImageItem {
+  id: string;
+  src: string;
+  alt: string;
+}
 export interface IPortfolioData {
   subTitle: string;
   title: string;
   description: string;
-  imageCount: number;
+  images?: Array<IImageItem>;
   team: {
     label: string;
     total: number;

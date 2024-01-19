@@ -1,0 +1,43 @@
+@use '@/styles/color.scss' as c;
+@import '@/styles/mixin.scss';
+
+.modal-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-x: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  img {
+    margin: 0 auto;
+    height: auto !important;
+    object-fit: cover;
+  }
+  .buttons {
+    position: fixed;
+    left: 50%;
+    bottom: 10px;
+    transform: translate(-50%, 0);
+    display: flex;
+    z-index: 99;
+    button {
+      margin: 0 10px;
+      &.close {
+        background-color: c.$color04;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .modal-image-container {
+    overflow-y: scroll;
+    img {
+      height: 100% !important;
+      width: auto !important;
+    }
+  }
+}
