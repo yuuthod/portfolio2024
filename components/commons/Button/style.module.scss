@@ -1,0 +1,10 @@
+@use '@/styles/color.scss' as c;
+
+.button {
+  display: inline-flex;
+  padding: 8px 16px;
+  font-weight: 500;
+  border-radius: 5px;
+  color: c.$color02;
+  background-color: c.$color01;
+}
