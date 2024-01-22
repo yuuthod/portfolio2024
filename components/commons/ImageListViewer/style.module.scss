@@ -1,0 +1,22 @@
+.container {
+  overflow-x: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .list {
+    display: flex;
+    min-height: 211px;
+    li {
+      overflow: hidden;
+      min-width: 357px;
+      max-height: 211px;
+      margin-right: 20px;
+      cursor: pointer;
+      img {
+        height: auto;
+      }
+    }
+  }
+}

@@ -12,8 +12,9 @@
     display: none;
   }
   img {
-    margin: 0 auto;
+    width: 100% !important;
     height: auto !important;
+    margin: 0 auto;
     object-fit: cover;
   }
   .buttons {
@@ -32,12 +33,12 @@
   }
 }
 
-@include tablet {
+@include mobile {
   .modal-image-container {
     overflow-y: scroll;
     img {
-      height: 100% !important;
       width: auto !important;
+      height: 100% !important;
     }
   }
 }

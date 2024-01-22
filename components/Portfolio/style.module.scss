@@ -45,29 +45,6 @@
   line-height: 1.5;
   word-break: keep-all;
 }
-
-.img-container {
-  overflow-x: scroll;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  .img-list {
-    display: flex;
-    min-height: 211px;
-    li {
-      overflow: hidden;
-      min-width: 357px;
-      max-height: 211px;
-      margin-right: 20px;
-      cursor: pointer;
-      img {
-        height: auto;
-      }
-    }
-  }
-}
 .infos {
   display: flex;
   margin-top: 60px;

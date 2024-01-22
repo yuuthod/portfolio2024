@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import Image from 'next/image';
+import CustomImage from '@/components/commons/CustomImage';
 import Button from '@/components/commons/Button';
 import { IImageItem } from '@/types/dataType';
 import style from './style.module.scss';
@@ -25,7 +25,10 @@ export default function ImageViewerModal({
   }>(images[idx]);
   const imageLastIdx = images.length - 1;
   const handleClickNextPerv = (isNext: boolean) => {
-    if (ref.current) ref.current.scrollTop = 0;
+    if (ref.current) {
+      ref.current.scrollTop = 0;
+      ref.current.scrollLeft = 0;
+    }
     const accIdx = isNext ? curIdx + 1 : curIdx - 1;
     setCurIdx(accIdx);
     setImgInfo(images[accIdx]);
@@ -44,7 +47,13 @@ export default function ImageViewerModal({
           <Button onClick={() => handleClickNextPerv(true)}>다음</Button>
         )}
       </div>
-      <Image alt='이미지 확대' src={imgInfo.src} fill />
+      <CustomImage
+        alt='이미지 확대'
+        src={imgInfo.src}
+        width={0}
+        height={0}
+        sizes='100vw'
+      />
     </div>
   );
 }
