@@ -29,6 +29,7 @@ function ProfilePhoto({ photos }: { photos: Array<IPhoto> }): ReactElement {
         width={183}
         height={183}
         sizes='183px'
+        priority
         {...(photos[currentImgeIdx].blur && {
           placeholder: 'blur',
           blurDataURL: photos[currentImgeIdx].blur
