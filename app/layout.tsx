@@ -4,7 +4,6 @@ import '@/styles/reset.css';
 import { getSide } from '@/api';
 import { use } from 'react';
 import SideBarComponent from '@/components/sideBar';
-import { roboto } from './fonts';
 import style from './page.module.scss';
 import Providers from './providers';
 
@@ -23,7 +22,7 @@ export default function RootLayout({
     return <div>ERROR SIDE : {sideResponse.resultCode}</div>;
   return (
     <html lang='ko' data-theme='light'>
-      <body className={roboto.className}>
+      <body>
         <Providers>
           <main className={style.container}>
             {sideResponse.result && (
