@@ -1,4 +1,11 @@
 @use '@/styles/color.scss' as c;
+@import '@/styles/mixin.scss';
+
+@include font-face('NotoSanseKR', '/fonts/notosans-black', 700);
+@include font-face('NotoSanseKR', '/fonts/notosans-bold', 600);
+@include font-face('NotoSanseKR', '/fonts/notosans-medium', 500);
+@include font-face('NotoSanseKR', '/fonts/notosans-light', 400);
+@include font-face('NotoSanseKR', '/fonts/notosans-thin', 300);
 
 html {
   font-size: 15px;
@@ -6,8 +13,18 @@ html {
 body {
   background-color: c.$color01;
   color: c.$color05;
-  font-weight: 300;
+  font-weight: 400;
   word-break: keep-all;
+  font-family:
+    NotoSanseKR,
+    -apple-system,
+    system-ui,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
 }
 p {
   margin: 0;
