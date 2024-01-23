@@ -7,7 +7,6 @@ import style from './style.module.scss';
 function CustomImage({ ...props }: ImageProps): ReactElement {
   const [isLoading, setIsLoading] = useState(true);
   const handleOnLoader = () => {
-    console.log('?');
     setIsLoading(false);
   };
   return (
@@ -17,7 +16,7 @@ function CustomImage({ ...props }: ImageProps): ReactElement {
         <div
           className={style.imageLoader}
           style={{
-            width: props.width
+            width: props.width || '100%'
           }}
         >
           <span>Loading...</span>
