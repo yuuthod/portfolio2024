@@ -35,8 +35,13 @@ function SideBarComponent({ enName, infos, nav }: ISideData): ReactElement {
     html.style.overflow = 'auto';
   }, [isMobileMenu]);
 
-  // Mobile Menu event가 desktop size에서 동작하는 것을 방지
   useEffect(() => {
+    // 모바일 브라우저에서 주소창 등에 의해 고정된 메뉴가 가려지는 것을 방지
+    const handleSetScrenHeihgt = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+    // Mobile Menu event가 desktop size에서 동작하는 것을 방지
     const handleWindowResize = () => {
       const html = document.querySelector('html');
       if (html === null) return;
@@ -44,8 +49,12 @@ function SideBarComponent({ enName, infos, nav }: ISideData): ReactElement {
       if (windowWidth > 770) {
         html.style.overflow = 'auto';
         setIsMobileMenu(false);
+      } else {
+        handleSetScrenHeihgt();
       }
     };
+
+    handleSetScrenHeihgt();
     window.addEventListener('resize', handleWindowResize);
     return () => {
       window.removeEventListener('resize', handleWindowResize);
