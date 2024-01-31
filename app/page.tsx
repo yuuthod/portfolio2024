@@ -1,4 +1,4 @@
-import InfoComponent from '@/components/info';
+import InfoComponent from '@/components/Info';
 import { getInfo } from '@/api';
 
 export default async function Info() {

@@ -3,7 +3,7 @@ import '@/styles/globals.scss';
 import '@/styles/reset.css';
 import { getSide } from '@/api';
 import { use } from 'react';
-import SideBarComponent from '@/components/sideBar';
+import SideBarComponent from '@/components/SideBar';
 import style from './page.module.scss';
 import Providers from './providers';
 
