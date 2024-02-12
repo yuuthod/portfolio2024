@@ -9,6 +9,7 @@ import CheckBoxSVG from '@/public/icons/check_box.svg';
 import CheckBoxBlankSVG from '@/public/icons/check_box_outline_blank.svg';
 import cn from 'classnames';
 import ImageListViewer from '@/components/commons/ImageListViewer';
+import markdownLinkConverter from '@/util/markdownLinkConverter';
 import style from './style.module.scss';
 
 function PortfolioComponent({
@@ -83,7 +84,11 @@ function PortfolioComponent({
             {taskList.list.map((task) => (
               <li key={task.id}>
                 <CircleRightSVG alt='참여범위 글머리 기호' />
-                <span>{task.description}</span>
+                <span>
+                  {markdownLinkConverter(task.description, {
+                    className: style.link
+                  })}
+                </span>
               </li>
             ))}
           </ul>
@@ -98,7 +103,11 @@ function PortfolioComponent({
                     ) : (
                       <CheckBoxBlankSVG alt='TODO ITEM 작업 예정' />
                     )}
-                    <span>{todo.description}</span>
+                    <span>
+                      {markdownLinkConverter(todo.description, {
+                        className: style.link
+                      })}
+                    </span>
                   </li>
                 ))}
               </ul>

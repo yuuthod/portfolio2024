@@ -112,6 +112,10 @@
     }
   }
 }
+.link {
+  color: c.$color01;
+  text-decoration: underline;
+}
 
 @include tablet {
   .infos {
