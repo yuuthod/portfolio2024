@@ -61,6 +61,7 @@ export interface IPortfolioData {
   subTitle: string;
   title: string;
   description: string;
+  date?: string;
   images?: Array<IImageItem>;
   team: {
     label: string;

@@ -15,6 +15,7 @@ function PortfolioComponent({
   subTitle,
   title,
   description,
+  date,
   images,
   team,
   skill,
@@ -45,6 +46,7 @@ function PortfolioComponent({
       </div>
       <p className={style.subTitle}>{subTitle}</p>
       <p className={style.title}>{title}</p>
+      {date && <p className={style.date}>{date}</p>}
       <p className={style['project-desc']}>{description}</p>
       {images && <ImageListViewer images={images} />}
       <div className={style.infos}>
