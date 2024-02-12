@@ -44,6 +44,16 @@
     margin-top: 20px;
     line-height: 30px;
   }
+  .sub-list {
+    text-indent: 20px;
+    font-size: 1.1rem;
+    li {
+      &::before {
+        content: '-';
+        padding-right: 5px;
+      }
+    }
+  }
 }
 
 .history {

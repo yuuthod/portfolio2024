@@ -22,6 +22,7 @@ export interface ICompanies {
     date: Array<string>;
   }>;
 }
+
 export interface IInfoData {
   name: string;
   year: number;
@@ -37,6 +38,7 @@ export interface IInfoData {
     list: Array<{
       id: string;
       label: string;
+      list?: Array<{ id: string; label: string }>;
     }>;
   };
   // 경력

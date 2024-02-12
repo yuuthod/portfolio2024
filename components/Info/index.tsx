@@ -32,7 +32,16 @@ function infoComponent({
           <p className={style.title}>{skills.label}</p>
           <ul className={style.list}>
             {skills.list.map((item) => (
-              <li key={item.id}>{item.label}</li>
+              <li key={item.id}>
+                {item.label}
+                {item.list && (
+                  <ul className={style['sub-list']}>
+                    {item.list.map((subItem) => (
+                      <li key={`${item.id}-${subItem.id}`}>{subItem.label}</li>
+                    ))}
+                  </ul>
+                )}
+              </li>
             ))}
           </ul>
         </div>
