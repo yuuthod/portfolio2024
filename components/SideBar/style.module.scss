@@ -9,9 +9,15 @@
 
 .mobileOpenBtn {
   display: none;
+  svg g path {
+    fill: c.$color01;
+  }
 }
 .mobileCloseBtn {
   display: none;
+  svg g path {
+    fill: c.$color03;
+  }
 }
 
 .container {
