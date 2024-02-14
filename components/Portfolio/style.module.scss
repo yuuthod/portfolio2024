@@ -12,12 +12,26 @@
   margin-bottom: 30px;
   font-size: 1.2rem;
   font-weight: 500;
-  color: c.$color07;
   a {
+    padding: 5px 10px;
     margin-right: 20px;
+    color: c.$color02;
+    background-color: c.$color01;
+    border-radius: 5px;
+    svg {
+      vertical-align: text-bottom;
+      g path {
+        fill: c.$color02;
+      }
+    }
   }
-  svg {
-    vertical-align: text-bottom;
+  a:hover {
+    color: c.$color01;
+    background-color: c.$color03;
+    transition: all ease 0.5s;
+    svg g path {
+      fill: c.$color01;
+    }
   }
   .perv-btn {
     svg {
