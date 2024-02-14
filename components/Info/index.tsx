@@ -19,7 +19,7 @@ function infoComponent({
   return (
     <div className={style.container}>
       <div className={style.privacy}>
-        <ProfilePhoto photos={photos} />
+        <ProfilePhoto photos={photos} className={style.profileContainer} />
         <div className={style.aboutMe}>
           <p>
             <span className={style.name}>{name}</span>
@@ -37,7 +37,12 @@ function infoComponent({
                 {item.list && (
                   <ul className={style['sub-list']}>
                     {item.list.map((subItem) => (
-                      <li key={`${item.id}-${subItem.id}`}>{subItem.label}</li>
+                      <li
+                        key={`${item.id}-${subItem.id}-1`}
+                        {...(subItem.light && { className: style.light })}
+                      >
+                        {subItem.label}
+                      </li>
                     ))}
                   </ul>
                 )}
