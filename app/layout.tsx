@@ -8,8 +8,8 @@ import style from './page.module.scss';
 import Providers from './providers';
 
 export const metadata: Metadata = {
-  title: "Yurim's Portfolio",
-  description: '안녕하세요 프론트엔드 개발자 이유림입니다.'
+  title: process.env.HTML_HTML,
+  description: process.env.HTML_DESCRIPTION
 };
 
 export default function RootLayout({
