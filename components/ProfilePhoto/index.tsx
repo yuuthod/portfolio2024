@@ -1,12 +1,16 @@
 'use client';
 
-import { ReactElement, useState } from 'react';
+import { HTMLAttributes, ReactElement, useState } from 'react';
 import Image from 'next/image';
 import { IPhoto } from '@/types/dataType';
 import TransformSVG from '@/public/icons/transform.svg';
+import cn from 'classnames';
 import style from './style.module.scss';
 
-function ProfilePhoto({ photos }: { photos: Array<IPhoto> }): ReactElement {
+function ProfilePhoto({
+  photos,
+  ...props
+}: { photos: Array<IPhoto> } & HTMLAttributes<HTMLDivElement>): ReactElement {
   const [currentImgeIdx, setCurrentImgeIdx] = useState<number>(0);
 
   const handleChangeImage = () => {
@@ -18,7 +22,7 @@ function ProfilePhoto({ photos }: { photos: Array<IPhoto> }): ReactElement {
   };
   return (
     <div
-      className={style.profileImg}
+      className={cn(style.profileImg, props.className)}
       role='presentation'
       onClick={handleChangeImage}
     >

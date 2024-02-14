@@ -38,7 +38,7 @@ export interface IInfoData {
     list: Array<{
       id: string;
       label: string;
-      list?: Array<{ id: string; label: string }>;
+      list?: Array<{ id: string; label: string; light?: boolean }>;
     }>;
   };
   // 경력
